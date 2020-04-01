@@ -44,7 +44,7 @@ class AngularPenaltySMLoss(nn.Module):
         assert torch.max(labels) < self.out_features
         
         for W in self.fc.parameters():
-            W = F.normalize(W, p=2, dim=1)
+            W.data = F.normalize(W, p=2, dim=1)
 
         x = F.normalize(x, p=2, dim=1)
 
